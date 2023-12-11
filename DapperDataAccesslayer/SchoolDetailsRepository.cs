@@ -117,7 +117,7 @@ namespace DapperDataAccessLayer
 
                 var con = new SqlConnection(connectionString);
                 con.Open();
-                var updateQuery = $"SchoolDetailsUpdate {Id},'{Sch.SchoolName}', '{Sch.Address}', '{Sch.StortedDate}', {Sch.PhoneNumber},'{Sch.Email_id}',";
+                var updateQuery = $"exec SchoolDetailsUpdate {Id},'{Sch.SchoolName}', '{Sch.Address}', '{Sch.StortedDate.ToString("MM/dd/yyyy")}', {Sch.PhoneNumber},'{Sch.Email_id}'";
                 var shl = con.QueryFirstOrDefault<SchoolDetail>(updateQuery);
                 con.Execute(updateQuery);
                 con.Close();
